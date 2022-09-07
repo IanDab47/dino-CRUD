@@ -8,29 +8,16 @@ const PORT = 3000
 app.set('view engine', 'ejs')
 app.use(layout)
 
+// app middleware | Tell express to listen for request bodies send from HTML forms
+app.use(express.urlencoded({ extended: false }))
+
+// // routes
+app.use('/dinosaurs', require('./controllers/dinosaurs.js'))
+app.use('/prehistoric-creatures', require('./controllers/prehistoric-creatures.js'))
+
 // route definitions
 app.get('/', (req, res) => {
-  res.send('welcome to the dino CRUD app 🐱‍🐉')
-})
-
-// GET /dinosaurs -- show all dinos
-app.get('/dinosaurs', (req, res) => {
-  res.send('show all dinos')
-})
-
-// GET /dinosaurs/new -- display a form to create a new dino
-app.get('/dinosaurs/new', (req, res) => {
-  res.send('show a form to create a new dino')
-})
-
-// POST /dinosaurs -- create a new dino in the DB
-app.post('/dinosaurs', (req, res) => {
-  res.send('create a new dino in the DB')
-})
-
-// GET /dinosaurs/:id -- display the details of one specific dino
-app.get('/dinosaurs/:id', (req, res) => {
-  res.send(`show details for dino with id of ${req.params.id}`)
+  res.render('home.ejs')
 })
 
 // liston on a port

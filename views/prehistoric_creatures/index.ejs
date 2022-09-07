@@ -1,0 +1,8 @@
+<h2>Index of all prehistoric creatures:</h2>
+
+<ul>
+  <% pcs.forEach(pc => { %>
+    <li>This is a <%= pc.type %></li>
+    <img src="<%= pc.img_url %>">
+  <% }) %>
+</ul>
